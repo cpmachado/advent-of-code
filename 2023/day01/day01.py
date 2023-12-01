@@ -12,7 +12,7 @@ def parse_digits(digits: List[str]) -> int:
     return 0
 
 
-def day01(filename: str) -> int:
+def part1(filename: str) -> int:
     x = []
     with open(filename) as f:
         x = [parse_digits([d for d in line if d.isdigit()]) for line in f]
@@ -22,8 +22,10 @@ def day01(filename: str) -> int:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("file", action="store", type=str)
+    parser.add_argument("-p", "--part", action="store", type=int, default=1)
     args = parser.parse_args()
-    print(day01(args.file))
+    if args.part == 1:
+        print(part1(args.file))
 
 
 if __name__ == "__main__":

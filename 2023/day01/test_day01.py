@@ -1,13 +1,13 @@
 import os
 import unittest
-from day01 import day01
+from day01 import part1
 
-TEST_FILE = os.path.join("data", "test.txt")
+TEST_FILE = os.path.join("data", "test_part1.txt")
 
 
 class Day01Tests(unittest.TestCase):
-    def test_day01(self):
-        actual = day01(TEST_FILE)
+    def test_part1(self):
+        actual = part1(TEST_FILE)
         expected = 142
         self.assertEqual(
             actual, expected, f"Expected calibration values {expected}, not {actual}"
