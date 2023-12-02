@@ -13,6 +13,7 @@ class CubeBag:
     """
     Describes a bag of cubes
     """
+
     cubes: dict[str, int]
 
     @staticmethod
@@ -51,6 +52,7 @@ class CubeGame:
     """
     Describes a game of cubes
     """
+
     game_id: int
     bags: list[CubeBag]
 
