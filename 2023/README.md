@@ -3,8 +3,8 @@
 My solutions to advent of code 2023 (https://adventofcode.com/2023)
 
 Days:
-- [x] [day 1](https://adventofcode.com/2023/day/1)
-- [ ] [day 2](https://adventofcode.com/2023/day/2)
+- [x] [Day 1: Trebuchet?!](https://adventofcode.com/2023/day/1)
+- [ ] [Day 2: Cube Conundrum](https://adventofcode.com/2023/day/2)
 - [ ] [day 3](https://adventofcode.com/2023/day/3)
 - [ ] [day 4](https://adventofcode.com/2023/day/4)
 - [ ] [day 5](https://adventofcode.com/2023/day/5)
