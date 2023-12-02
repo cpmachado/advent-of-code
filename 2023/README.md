@@ -3,7 +3,7 @@
 My solutions to advent of code 2023 (<https://adventofcode.com/2023>)
 
 Days:
-- [ ] day 1(<https://adventofcode.com/2023/day/1>)
+- [x] day 1(<https://adventofcode.com/2023/day/1>)
 - [ ] day 2(<https://adventofcode.com/2023/day/2>)
 - [ ] day 3(<https://adventofcode.com/2023/day/3>)
 - [ ] day 4(<https://adventofcode.com/2023/day/4>)
