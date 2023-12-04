@@ -9,12 +9,19 @@ from functools import reduce
 
 @dataclass
 class ScratchCard:
+    """
+    Describes a ScratchCard
+    """
+
     card_id: int
     winning: list[int]
     numbers: list[int]
 
     @staticmethod
     def from_line(line: str):
+        """
+        Parses a Line into a ScratchCard
+        """
         card_section, numbers_section = line.strip().split(":")
         card_id = int(card_section.strip().split(" ")[-1])
         winning, numbers = [
@@ -24,11 +31,17 @@ class ScratchCard:
         return ScratchCard(card_id, winning, numbers)
 
     def number_of_matches(self):
+        """
+        Number of winning numbers matches
+        """
         return sum(1 for x in self.winning if x in self.numbers)
 
     def score(self) -> int:
-        n = self.number_of_matches()
-        return int(2 ** (n - 1)) if n > 0 else 0
+        """
+        Score of ScratchCard
+        """
+        number_of_matches = self.number_of_matches()
+        return int(2 ** (number_of_matches - 1)) if number_of_matches > 0 else 0
 
 
 def part1(filename: str) -> int:
@@ -42,12 +55,18 @@ def part1(filename: str) -> int:
 def scratch_reducer(
     acc: tuple[int, tuple[int]], scratch: ScratchCard
 ) -> tuple[int, tuple[int]]:
+    """
+    Reducer for Part 2
+    """
     val, carry = acc
     multiplier, *tail = carry
-    n = scratch.number_of_matches()
+    number_of_matches = scratch.number_of_matches()
     if len(tail) == 0:
         tail = [0 for _ in range(len(scratch.winning))]
-    new_tail = [x if i >= n else x + 1 + multiplier for i, x in enumerate([*tail, 0])]
+    new_tail = [
+        x if i >= number_of_matches else x + 1 + multiplier
+        for i, x in enumerate([*tail, 0])
+    ]
     return (val + 1 + multiplier, new_tail)
 
 
