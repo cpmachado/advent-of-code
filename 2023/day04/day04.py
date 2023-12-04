@@ -5,7 +5,6 @@
 import argparse
 from dataclasses import dataclass
 from functools import reduce
-from operator import mul
 
 
 @dataclass
@@ -24,9 +23,12 @@ class ScratchCard:
         ]
         return ScratchCard(card_id, winning, numbers)
 
-    def score(self):
-        n = sum(1 for x in self.winning if x in self.numbers)
-        return 2 ** (n - 1) if n > 0 else 0
+    def number_of_matches(self):
+        return sum(1 for x in self.winning if x in self.numbers)
+
+    def score(self) -> int:
+        n = self.number_of_matches()
+        return int(2 ** (n - 1)) if n > 0 else 0
 
 
 def part1(filename: str) -> int:
@@ -35,6 +37,31 @@ def part1(filename: str) -> int:
     """
     with open(filename, encoding="utf8") as file_handle:
         return sum(ScratchCard.from_line(line).score() for line in file_handle)
+
+
+def scratch_reducer(
+    acc: tuple[int, tuple[int]], scratch: ScratchCard
+) -> tuple[int, tuple[int]]:
+    val, carry = acc
+    multiplier, *tail = carry
+    n = scratch.number_of_matches()
+    if len(tail) == 0:
+        tail = [0 for _ in range(len(scratch.winning))]
+    new_tail = [x if i >= n else x + 1 + multiplier for i, x in enumerate([*tail, 0])]
+    return (val + 1 + multiplier, new_tail)
+
+
+def part2(filename: str) -> int:
+    """
+    Solution of part 2
+    """
+    with open(filename, encoding="utf8") as file_handle:
+        val, _ = reduce(
+            scratch_reducer,
+            (ScratchCard.from_line(line) for line in file_handle),
+            (0, [0]),
+        )
+        return val
 
 
 def main():
@@ -47,6 +74,8 @@ def main():
     args = parser.parse_args()
     if args.part == 1:
         print(part1(args.file))
+    if args.part == 2:
+        print(part2(args.file))
     else:
         raise NotImplementedError("Not implemented")
 
