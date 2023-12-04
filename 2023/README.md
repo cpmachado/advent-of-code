@@ -6,7 +6,7 @@ Days:
 - [x] [Day 1: Trebuchet?!](https://adventofcode.com/2023/day/1)
 - [x] [Day 2: Cube Conundrum](https://adventofcode.com/2023/day/2)
 - [ ] [day 3](https://adventofcode.com/2023/day/3)
-- [ ] [day 4](https://adventofcode.com/2023/day/4)
+- [ ] [Day 4: Scratchcards](https://adventofcode.com/2023/day/4)
 - [ ] [day 5](https://adventofcode.com/2023/day/5)
 - [ ] [day 6](https://adventofcode.com/2023/day/6)
 - [ ] [day 7](https://adventofcode.com/2023/day/7)
