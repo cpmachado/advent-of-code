@@ -5,7 +5,7 @@ My solutions to advent of code 2023 (https://adventofcode.com/2023)
 Days:
 - [x] [Day 1: Trebuchet?!](https://adventofcode.com/2023/day/1)
 - [x] [Day 2: Cube Conundrum](https://adventofcode.com/2023/day/2)
-- [ ] [Day 3: Gear Ratios](https://adventofcode.com/2023/day/3)
+- [x] [Day 3: Gear Ratios](https://adventofcode.com/2023/day/3)
 - [x] [Day 4: Scratchcards](https://adventofcode.com/2023/day/4)
 - [ ] [day 5](https://adventofcode.com/2023/day/5)
 - [ ] [day 6](https://adventofcode.com/2023/day/6)
