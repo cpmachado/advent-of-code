@@ -4,7 +4,7 @@
 """
 import os
 import unittest
-from day06 import part1
+from day06 import part1, part2
 
 TEST_FILE = os.path.join("data", "test.txt")
 
@@ -20,6 +20,14 @@ class Day06Tests(unittest.TestCase):
         """
         actual = part1(TEST_FILE)
         expected = 288
+        self.assertEqual(actual, expected, f"Expected {expected} points, not {actual}")
+
+    def test_part2(self):
+        """
+        Tests for day 6 part 2
+        """
+        actual = part2(TEST_FILE)
+        expected = 71503
         self.assertEqual(actual, expected, f"Expected {expected} points, not {actual}")
 
 

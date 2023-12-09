@@ -12,6 +12,10 @@ def parse_values(line: str) -> list[int]:
     return [int(x) for x in line.split(":")[1].strip().split(" ") if x]
 
 
+def parse_big_value(line: str) -> int:
+    return int(line.split(":")[1].strip().replace(" ", ""))
+
+
 def dmr(t: int, r: int, i: int) -> int:
     return i * (t - i) - r
 
@@ -38,6 +42,13 @@ def part1(filename: str) -> int:
         return reduce(mul, (dmr_count(*t) for t in zip(times, distances)), 1)
 
 
+def part2(filename: str) -> int:
+    with open(filename, encoding="utf8") as file_handle:
+        time = parse_big_value(next(file_handle))
+        distance = parse_big_value(next(file_handle))
+        return dmr_count(time, distance)
+
+
 def main():
     """
     Main function of day 5 of Advent of code 2023
@@ -48,6 +59,8 @@ def main():
     args = parser.parse_args()
     if args.part == 1:
         print(part1(args.file))
+    elif args.part == 2:
+        print(part2(args.file))
     else:
         raise NotImplementedError("Not implemented")
 
