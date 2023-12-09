@@ -4,23 +4,35 @@
 """
 import argparse
 from functools import reduce
-from math import sqrt, floor, ceil
+from math import sqrt, floor
 from operator import mul
 
 
 def parse_values(line: str) -> list[int]:
+    """
+    Parse line of values for part1
+    """
     return [int(x) for x in line.split(":")[1].strip().split(" ") if x]
 
 
 def parse_big_value(line: str) -> int:
+    """
+    Parse big value from line for part2
+    """
     return int(line.split(":")[1].strip().replace(" ", ""))
 
 
 def dmr(t: int, r: int, i: int) -> int:
+    """
+    Computes distance minus record
+    """
     return i * (t - i) - r
 
 
 def dmr_count(t: int, r: int) -> int:
+    """
+    Counts how many integers does dmr > 0
+    """
     # d(i) = i * (t - i)
     # dmr(i) = d(i) - r -- (d minus record)
     # we want dmr > 0
@@ -36,6 +48,9 @@ def dmr_count(t: int, r: int) -> int:
 
 
 def part1(filename: str) -> int:
+    """
+    Part 1 of the challenge
+    """
     with open(filename, encoding="utf8") as file_handle:
         times = parse_values(next(file_handle))
         distances = parse_values(next(file_handle))
@@ -43,6 +58,9 @@ def part1(filename: str) -> int:
 
 
 def part2(filename: str) -> int:
+    """
+    Part 2 of the challenge
+    """
     with open(filename, encoding="utf8") as file_handle:
         time = parse_big_value(next(file_handle))
         distance = parse_big_value(next(file_handle))
