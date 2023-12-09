@@ -8,7 +8,7 @@ Days:
 - [x] [Day 3: Gear Ratios](https://adventofcode.com/2023/day/3)
 - [x] [Day 4: Scratchcards](https://adventofcode.com/2023/day/4)
 - [ ] [day 5](https://adventofcode.com/2023/day/5)
-- [ ] [Day 6: Wait For It](https://adventofcode.com/2023/day/6)
+- [x] [Day 6: Wait For It](https://adventofcode.com/2023/day/6)
 - [ ] [day 7](https://adventofcode.com/2023/day/7)
 - [ ] [day 8](https://adventofcode.com/2023/day/8)
 - [ ] [day 9](https://adventofcode.com/2023/day/9)
