@@ -10,7 +10,7 @@ Days:
 - [ ] [day 5](https://adventofcode.com/2023/day/5)
 - [x] [Day 6: Wait For It](https://adventofcode.com/2023/day/6)
 - [ ] [day 7](https://adventofcode.com/2023/day/7)
-- [ ] [day 8](https://adventofcode.com/2023/day/8)
+- [x] [Day 8: Haunted Wasteland](https://adventofcode.com/2023/day/8)
 - [ ] [day 9](https://adventofcode.com/2023/day/9)
 - [ ] [day 10](https://adventofcode.com/2023/day/10)
 - [ ] [day 11](https://adventofcode.com/2023/day/11)
