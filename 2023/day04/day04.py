@@ -93,7 +93,7 @@ def main():
     args = parser.parse_args()
     if args.part == 1:
         print(part1(args.file))
-    if args.part == 2:
+    elif args.part == 2:
         print(part2(args.file))
     else:
         raise NotImplementedError("Not implemented")
