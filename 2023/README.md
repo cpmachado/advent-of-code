@@ -7,7 +7,7 @@ Days:
 - [x] [Day 2: Cube Conundrum](https://adventofcode.com/2023/day/2)
 - [x] [Day 3: Gear Ratios](https://adventofcode.com/2023/day/3)
 - [x] [Day 4: Scratchcards](https://adventofcode.com/2023/day/4)
-- [ ] [day 5](https://adventofcode.com/2023/day/5)
+- [x] [Day 5: If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5)
 - [x] [Day 6: Wait For It](https://adventofcode.com/2023/day/6)
 - [ ] [day 7](https://adventofcode.com/2023/day/7)
 - [x] [Day 8: Haunted Wasteland](https://adventofcode.com/2023/day/8)
