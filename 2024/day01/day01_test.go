@@ -1,3 +1,4 @@
+/* Copyright © 2024 cpmachado <cpmachado@protonmail> */
 package day01
 
 import "testing"
