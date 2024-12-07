@@ -8,6 +8,7 @@ import (
 	"strings"
 )
 
+// Parses the input file for day01
 func ParseFile(filename string) ([]LocationId, []LocationId) {
 	listA := []LocationId{}
 	listB := []LocationId{}

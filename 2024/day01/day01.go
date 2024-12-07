@@ -7,11 +7,10 @@ import (
 	"slices"
 )
 
+// Represents a Location Id
 type LocationId int
 
-// Solves first question, as sum is commutative, one can simply add
-// up all, compute difference and get the absolute value of it.
-// Computes the difference of the sum between two lists
+// Sorts provided slices, and computes the sum of differences
 func ListDiff(lst, other []LocationId) int {
 	if len(lst) != len(other) {
 		log.Fatal("There's an assumption of the lists being the same size\n")
