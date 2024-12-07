@@ -4,26 +4,26 @@ import "testing"
 
 func TestSafeReport(t *testing.T) {
 	t.Run("Test safe reports", func(t *testing.T) {
-		safeReports := [][]int{
-			[]int{7, 6, 4, 2, 1},
-			[]int{1, 3, 6, 7, 9},
+		safeReports := []Report{
+			Report{7, 6, 4, 2, 1},
+			Report{1, 3, 6, 7, 9},
 		}
 
 		for _, report := range safeReports {
-			if !SafeReport(report) {
+			if !report.IsSafe() {
 				t.Fatalf("Expected '%v' safe report, but wasn't", report)
 			}
 		}
 	})
 	t.Run("Test unsafe reports", func(t *testing.T) {
-		unsafeReports := [][]int{
-			[]int{1, 2, 7, 8, 9},
-			[]int{9, 7, 6, 2, 1},
-			[]int{1, 3, 2, 4, 5},
-			[]int{8, 6, 4, 4, 1},
+		unsafeReports := []Report{
+			Report{1, 2, 7, 8, 9},
+			Report{9, 7, 6, 2, 1},
+			Report{1, 3, 2, 4, 5},
+			Report{8, 6, 4, 4, 1},
 		}
 		for _, report := range unsafeReports {
-			if SafeReport(report) {
+			if report.IsSafe() {
 				t.Fatalf("Expected '%v' unsafe report, but wasn't", report)
 			}
 		}
@@ -31,13 +31,13 @@ func TestSafeReport(t *testing.T) {
 }
 
 func TestCountSafeReports(t *testing.T) {
-	reports := [][]int{
-		[]int{7, 6, 4, 2, 1},
-		[]int{1, 2, 7, 8, 9},
-		[]int{9, 7, 6, 2, 1},
-		[]int{1, 3, 2, 4, 5},
-		[]int{8, 6, 4, 4, 1},
-		[]int{1, 3, 6, 7, 9},
+	reports := []Report{
+		Report{7, 6, 4, 2, 1},
+		Report{1, 2, 7, 8, 9},
+		Report{9, 7, 6, 2, 1},
+		Report{1, 3, 2, 4, 5},
+		Report{8, 6, 4, 4, 1},
+		Report{1, 3, 6, 7, 9},
 	}
 
 	got := CountSafeReports(reports)

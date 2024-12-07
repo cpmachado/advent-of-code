@@ -7,24 +7,31 @@ const (
 	MaxLevelDifference = 3
 )
 
-func SafeReport(report []int) bool {
-	if len(report) < 3 {
+type Level int
+
+func (l Level) InSafeRange(prev Level, increasing bool) bool {
+	diff := l - prev
+	if increasing {
+		return MinLevelDifference <= diff && diff <= MaxLevelDifference
+	} else {
+		return -MinLevelDifference >= diff && diff >= -MaxLevelDifference
+	}
+}
+
+type Report []Level
+
+func (r Report) IsSafe() bool {
+	if len(r) < 3 {
 		return true
 	}
 
-	increasing := report[0] < report[1]
-	prev := report[0]
+	increasing := r[0] < r[1]
+	prev := r[0]
 
-	for i := 1; i < len(report); i++ {
-		curr := report[i]
-		if increasing {
-			if (prev+MinLevelDifference) > curr || (prev+MaxLevelDifference) < curr {
-				return false
-			}
-		} else {
-			if (prev-MinLevelDifference) < curr || (prev-MaxLevelDifference) > curr {
-				return false
-			}
+	for i := 1; i < len(r); i++ {
+		curr := r[i]
+		if !curr.InSafeRange(prev, increasing) {
+			return false
 		}
 		prev = curr
 	}
@@ -32,10 +39,10 @@ func SafeReport(report []int) bool {
 	return true
 }
 
-func CountSafeReports(reports [][]int) int {
+func CountSafeReports(reports []Report) int {
 	count := 0
 	for _, report := range reports {
-		if SafeReport(report) {
+		if report.IsSafe() {
 			count++
 		}
 	}
