@@ -3,7 +3,7 @@
 My solutions to advent of code 2024 (https://adventofcode.com/2024)
 
 Days:
-- [ ] [Day 1](https://adventofcode.com/2024/day/1)
+- [x] [Day 1: Historian Hysteria](https://adventofcode.com/2024/day/1)
 - [ ] [Day 2](https://adventofcode.com/2024/day/2)
 - [ ] [Day 3](https://adventofcode.com/2024/day/3)
 - [ ] [Day 4](https://adventofcode.com/2024/day/4)
