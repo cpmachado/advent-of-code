@@ -8,6 +8,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var second bool
+
 // day01Cmd represents the day01 command
 var day01Cmd = &cobra.Command{
 	Use:   "day01",
@@ -17,10 +19,15 @@ var day01Cmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		filename := args[0]
 		a, b := day01.ParseFile(filename)
-		fmt.Printf("Difference is %d\n", day01.ListDiff(a, b))
+		if second {
+			fmt.Printf("Similarity Score is %d\n", day01.ListSimilarityScore(a, b))
+		} else {
+			fmt.Printf("Difference is %d\n", day01.ListDiff(a, b))
+		}
 	},
 }
 
 func init() {
+	day01Cmd.PersistentFlags().BoolVarP(&second, "second", "s", false, "second part")
 	rootCmd.AddCommand(day01Cmd)
 }
