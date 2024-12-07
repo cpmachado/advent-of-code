@@ -4,6 +4,8 @@ import (
 	"log"
 )
 
+type LocationId int
+
 // Absolute number for integers
 func iAbs(a int) int {
 	if a < 0 {
@@ -12,11 +14,11 @@ func iAbs(a int) int {
 	return a
 }
 
-// Sum of a slice of ints
-func iSum(s []int) int {
+// Sum of LocationIds
+func iSum(s []LocationId) int {
 	sum := 0
 	for _, v := range s {
-		sum += v
+		sum += int(v)
 	}
 	return sum
 }
@@ -24,7 +26,7 @@ func iSum(s []int) int {
 // Solves first question, as multiplication is commutative, one can simply add
 // up all, compute difference and get the absolute value of it.
 // Computes the difference of the sum between two lists
-func ListDiff(lst, other []int) int {
+func ListDiff(lst, other []LocationId) int {
 	if len(lst) != len(other) {
 		log.Fatal("There's an assumption of the lists being the same size\n")
 	}
