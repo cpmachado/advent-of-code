@@ -2,32 +2,34 @@ package day02
 
 import "testing"
 
-func TestSafeReport(t *testing.T) {
-	t.Run("Test safe reports", func(t *testing.T) {
-		safeReports := []Report{
-			Report{7, 6, 4, 2, 1},
-			Report{1, 3, 6, 7, 9},
-		}
+var mapSafe = map[bool]string{
+	false: "unsafe",
+	true:  "safe",
+}
 
-		for _, report := range safeReports {
-			if !report.IsSafe() {
-				t.Fatalf("Expected '%v' safe report, but wasn't", report)
-			}
+func TestReportIsSafe(t *testing.T) {
+	tests := []struct {
+		report Report
+		want   bool
+	}{
+		{report: Report{7, 6, 4, 2, 1}, want: true},
+		{report: Report{1, 2, 7, 8, 9}, want: false},
+		{report: Report{9, 7, 6, 2, 1}, want: false},
+		{report: Report{1, 3, 2, 4, 5}, want: false},
+		{report: Report{8, 6, 4, 4, 1}, want: false},
+		{report: Report{1, 3, 6, 7, 9}, want: true},
+	}
+
+	for _, test := range tests {
+		report := test.report
+
+		got := report.IsSafe()
+		want := test.want
+
+		if got != want {
+			t.Fatalf("Expected %s report(%v), but got %s", mapSafe[want], report, mapSafe[got])
 		}
-	})
-	t.Run("Test unsafe reports", func(t *testing.T) {
-		unsafeReports := []Report{
-			Report{1, 2, 7, 8, 9},
-			Report{9, 7, 6, 2, 1},
-			Report{1, 3, 2, 4, 5},
-			Report{8, 6, 4, 4, 1},
-		}
-		for _, report := range unsafeReports {
-			if report.IsSafe() {
-				t.Fatalf("Expected '%v' unsafe report, but wasn't", report)
-			}
-		}
-	})
+	}
 }
 
 func TestCountSafeReports(t *testing.T) {
