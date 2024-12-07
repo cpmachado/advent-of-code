@@ -11,7 +11,7 @@ func TestSafeReport(t *testing.T) {
 
 		for _, report := range safeReports {
 			if !SafeReport(report) {
-				t.Fatalf("Expected '%q' safe report, but wasn't", report)
+				t.Fatalf("Expected '%v' safe report, but wasn't", report)
 			}
 		}
 	})
@@ -24,7 +24,7 @@ func TestSafeReport(t *testing.T) {
 		}
 		for _, report := range unsafeReports {
 			if SafeReport(report) {
-				t.Fatalf("Expected '%q' unsafe report, but wasn't", report)
+				t.Fatalf("Expected '%v' unsafe report, but wasn't", report)
 			}
 		}
 	})
