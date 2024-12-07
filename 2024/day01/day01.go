@@ -3,34 +3,26 @@ package day01
 
 import (
 	"log"
+	"math"
+	"slices"
 )
 
 type LocationId int
 
-// Absolute number for integers
-func iAbs(a int) int {
-	if a < 0 {
-		return -a
-	}
-	return a
-}
-
-// Sum of LocationIds
-func iSum(s []LocationId) int {
-	sum := 0
-	for _, v := range s {
-		sum += int(v)
-	}
-	return sum
-}
-
-// Solves first question, as multiplication is commutative, one can simply add
+// Solves first question, as sum is commutative, one can simply add
 // up all, compute difference and get the absolute value of it.
 // Computes the difference of the sum between two lists
 func ListDiff(lst, other []LocationId) int {
 	if len(lst) != len(other) {
 		log.Fatal("There's an assumption of the lists being the same size\n")
 	}
+	slices.Sort(lst)
+	slices.Sort(other)
+	sum := 0
 
-	return iAbs(iSum(lst) - iSum(other))
+	for i, v := range lst {
+		sum += int(math.Abs(float64(v - other[i])))
+	}
+
+	return sum
 }
