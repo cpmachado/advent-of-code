@@ -9,6 +9,8 @@ const (
 
 type Level int
 
+// Checks if level is in a safe range, given the previous level and if it's
+// increasing
 func (l Level) InSafeRange(prev Level, increasing bool) bool {
 	diff := l - prev
 	if increasing {
@@ -20,6 +22,7 @@ func (l Level) InSafeRange(prev Level, increasing bool) bool {
 
 type Report []Level
 
+// Checks if a given Report is safe
 func (r Report) IsSafe() bool {
 	if len(r) < 3 {
 		return true
@@ -39,6 +42,7 @@ func (r Report) IsSafe() bool {
 	return true
 }
 
+// Count the number of safe reports
 func CountSafeReports(reports []Report) int {
 	count := 0
 	for _, report := range reports {
