@@ -26,6 +26,7 @@ func ListDiff(lst, other []LocationId) int {
 	return sum
 }
 
+// Computes SimilarityScore between 2 lists
 func ListSimilarityScore(lst, other []LocationId) int {
 	if len(lst) != len(other) {
 		log.Fatal("There's an assumption of the lists being the same size\n")
