@@ -23,7 +23,7 @@ func (l Level) InSafeRange(prev Level, increasing bool) bool {
 type Report []Level
 
 // Checks if a given Report is safe
-func (r Report) IsSafe() bool {
+func (r Report) IsSafe(dampener bool) bool {
 	if len(r) < 3 {
 		return true
 	}
@@ -43,10 +43,10 @@ func (r Report) IsSafe() bool {
 }
 
 // Count the number of safe reports
-func CountSafeReports(reports []Report) int {
+func CountSafeReports(reports []Report, dampener bool) int {
 	count := 0
 	for _, report := range reports {
-		if report.IsSafe() {
+		if report.IsSafe(dampener) {
 			count++
 		}
 	}

@@ -19,7 +19,7 @@ var day02Cmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		filename := args[0]
 		reports := day02.ParseFile(filename)
-		fmt.Printf("Safe report count: %d\n", day02.CountSafeReports(reports))
+		fmt.Printf("Safe report count: %d\n", day02.CountSafeReports(reports, false))
 	},
 }
 
