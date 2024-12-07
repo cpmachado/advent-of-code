@@ -28,12 +28,17 @@ func (r Report) IsSafe(dampener bool) bool {
 		return true
 	}
 
+	skipped := !dampener
 	increasing := r[0] < r[1]
 	prev := r[0]
 
 	for i := 1; i < len(r); i++ {
 		curr := r[i]
 		if !curr.InSafeRange(prev, increasing) {
+			if !skipped {
+				skipped = true
+				continue
+			}
 			return false
 		}
 		prev = curr
