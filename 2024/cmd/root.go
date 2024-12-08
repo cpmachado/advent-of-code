@@ -7,6 +7,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var Second bool
+
 var rootCmd = &cobra.Command{
 	Use:   "aoc2024",
 	Short: "Command to run AOC 2024 solutions",
@@ -20,4 +22,6 @@ func Execute() {
 	}
 }
 
-func init() {}
+func init() {
+	rootCmd.PersistentFlags().BoolVarP(&Second, "second", "s", false, "second part")
+}
