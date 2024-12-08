@@ -22,6 +22,7 @@ func (l Level) InSafeRange(prev Level, increasing bool) bool {
 
 type Report []Level
 
+// Checks if a given Report is safe, considering if it uses dampener
 func (r Report) IsSafe(dampener bool) bool {
 	if r.IsStrictSafe() {
 		return true
@@ -40,7 +41,7 @@ func (r Report) IsSafe(dampener bool) bool {
 	return false
 }
 
-// Checks if a given Report is safe
+// Checks if a given Report is strictly safe
 func (r Report) IsStrictSafe() bool {
 	if len(r) < 3 {
 		return true
