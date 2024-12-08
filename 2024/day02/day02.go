@@ -22,15 +22,18 @@ func (l Level) InSafeRange(prev Level, increasing bool) bool {
 
 type Report []Level
 
-func (r Report) IsSafeDampened() bool {
-	if r.IsSafe(false) {
+func (r Report) IsSafe(dampener bool) bool {
+	if r.IsStrictSafe() {
 		return true
+	}
+	if !dampener {
+		return false
 	}
 	aux := make(Report, len(r)-1)
 	for i := range r {
 		copy(aux, r[:i])
 		copy(aux[i:], r[i+1:])
-		if aux.IsSafe(false) {
+		if aux.IsStrictSafe() {
 			return true
 		}
 	}
@@ -38,13 +41,9 @@ func (r Report) IsSafeDampened() bool {
 }
 
 // Checks if a given Report is safe
-func (r Report) IsSafe(dampener bool) bool {
+func (r Report) IsStrictSafe() bool {
 	if len(r) < 3 {
 		return true
-	}
-
-	if dampener {
-		return r.IsSafeDampened()
 	}
 
 	increasing := r[0] < r[1]
