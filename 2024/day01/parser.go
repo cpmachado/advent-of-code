@@ -9,9 +9,9 @@ import (
 )
 
 // Parses the input file for day01
-func ParseFile(filename string) ([]int, []int) {
-	listA := []int{}
-	listB := []int{}
+func ParseFile(filename string) (LocationIdList, LocationIdList) {
+	listA := LocationIdList{}
+	listB := LocationIdList{}
 
 	file, err := os.Open(filename)
 	if err != nil {
