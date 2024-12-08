@@ -20,9 +20,9 @@ var day01Cmd = &cobra.Command{
 		filename := args[0]
 		a, b := day01.ParseFile(filename)
 		if second {
-			fmt.Printf("Similarity Score is %d\n", day01.ListSimilarityScore(a, b))
+			fmt.Printf("Similarity Score is %d\n", a.SimilarityScore(b))
 		} else {
-			fmt.Printf("Difference is %d\n", day01.ListDiff(a, b))
+			fmt.Printf("Difference is %d\n", a.DifferenceScore(b))
 		}
 	},
 }
