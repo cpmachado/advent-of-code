@@ -9,9 +9,9 @@ import (
 )
 
 // Parses the input file for day01
-func ParseFile(filename string) ([]LocationId, []LocationId) {
-	listA := []LocationId{}
-	listB := []LocationId{}
+func ParseFile(filename string) ([]int, []int) {
+	listA := []int{}
+	listB := []int{}
 
 	file, err := os.Open(filename)
 	if err != nil {
@@ -25,9 +25,8 @@ func ParseFile(filename string) ([]LocationId, []LocationId) {
 		cols := strings.Fields(line)
 		a, _ := strconv.Atoi(cols[0])
 		b, _ := strconv.Atoi(cols[1])
-		listA = append(listA, LocationId(a))
-		listB = append(listB, LocationId(b))
-
+		listA = append(listA, a)
+		listB = append(listB, b)
 	}
 	return listA, listB
 }
