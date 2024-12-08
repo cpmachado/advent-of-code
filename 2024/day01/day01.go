@@ -7,8 +7,10 @@ import (
 	"github.com/cpmachado/advent-of-code/2024/common/util"
 )
 
+type LocationIdList []int
+
 // Sorts provided slices, and computes the sum of differences
-func ListDiff(lst, other []int) int {
+func (lst LocationIdList) DifferenceScore(other LocationIdList) int {
 	slices.Sort(lst)
 	slices.Sort(other)
 	sum := 0
@@ -21,7 +23,7 @@ func ListDiff(lst, other []int) int {
 }
 
 // Computes SimilarityScore between 2 lists
-func ListSimilarityScore(lst, other []int) int {
+func (lst LocationIdList) SimilarityScore(other LocationIdList) int {
 	counter := make(map[int]int)
 
 	// Compute count of second list
