@@ -25,6 +25,9 @@ func TestReportIsSafe(t *testing.T) {
 		{report: Report{1, 3, 2, 4, 5}, dampener: true, want: true},
 		{report: Report{8, 6, 4, 4, 1}, dampener: true, want: true},
 		{report: Report{1, 3, 6, 7, 9}, dampener: true, want: true},
+		// skip first level as per reddit discussion
+		{report: Report{1, 1, 2, 3, 4}, dampener: true, want: true},
+		{report: Report{2, 5, 4, 3, 2}, dampener: true, want: true},
 	}
 
 	for _, test := range tests {
