@@ -22,23 +22,36 @@ func (l Level) InSafeRange(prev Level, increasing bool) bool {
 
 type Report []Level
 
+func (r Report) IsSafeDampened() bool {
+	if r.IsSafe(false) {
+		return true
+	}
+	aux := make(Report, len(r)-1)
+	for i := range r {
+		copy(aux, r[:i])
+		copy(aux[i:], r[i+1:])
+		if aux.IsSafe(false) {
+			return true
+		}
+	}
+	return false
+}
+
 // Checks if a given Report is safe
 func (r Report) IsSafe(dampener bool) bool {
 	if len(r) < 3 {
 		return true
 	}
 
-	skipped := !dampener
+	if dampener {
+		return r.IsSafeDampened()
+	}
+
 	increasing := r[0] < r[1]
 	prev := r[0]
 
-	for i := 1; i < len(r); i++ {
-		curr := r[i]
+	for _, curr := range r[1:] {
 		if !curr.InSafeRange(prev, increasing) {
-			if !skipped {
-				skipped = true
-				continue
-			}
 			return false
 		}
 		prev = curr
