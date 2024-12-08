@@ -26,7 +26,11 @@ var day03Cmd = &cobra.Command{
 
 		str := string(input)
 
-		fmt.Printf("Program resulted in: %d\n", day03.ProgramInterpreter(str))
+		if !Second {
+			fmt.Printf("Program resulted in: %d\n", day03.ProgramInterpreter(str))
+		} else {
+			fmt.Printf("Program resulted in: %d\n", day03.ProgramInterpreterImproved(str))
+		}
 	},
 }
 
