@@ -19,3 +19,8 @@ func ProgramInterpreter(input string) int {
 	}
 	return sum
 }
+
+// Improved processes the multiplications from corrupted input program
+func ProgramInterpreterImproved(input string) int {
+	return 0
+}
