@@ -5,9 +5,9 @@ import "testing"
 
 func TestListDiff(t *testing.T) {
 	// List of Ids
-	listA := []LocationId{3, 4, 2, 1, 3, 3}
+	listA := []int{3, 4, 2, 1, 3, 3}
 	// Other List of Ids
-	listB := []LocationId{4, 3, 5, 3, 9, 3}
+	listB := []int{4, 3, 5, 3, 9, 3}
 	got := ListDiff(listA, listB)
 	want := 11
 
@@ -18,9 +18,9 @@ func TestListDiff(t *testing.T) {
 
 func TestListSimilarityScore(t *testing.T) {
 	// List of Ids
-	listA := []LocationId{3, 4, 2, 1, 3, 3}
+	listA := []int{3, 4, 2, 1, 3, 3}
 	// Other List of Ids
-	listB := []LocationId{4, 3, 5, 3, 9, 3}
+	listB := []int{4, 3, 5, 3, 9, 3}
 	got := ListSimilarityScore(listA, listB)
 	want := 31
 

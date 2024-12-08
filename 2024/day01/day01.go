@@ -2,29 +2,27 @@
 package day01
 
 import (
-	"math"
 	"slices"
+
+	"github.com/cpmachado/advent-of-code/2024/common/util"
 )
 
-// Represents a Location Id
-type LocationId int
-
 // Sorts provided slices, and computes the sum of differences
-func ListDiff(lst, other []LocationId) int {
+func ListDiff(lst, other []int) int {
 	slices.Sort(lst)
 	slices.Sort(other)
 	sum := 0
 
 	for i, v := range lst {
-		sum += int(math.Abs(float64(v - other[i])))
+		sum += util.IntAbs(v - other[i])
 	}
 
 	return sum
 }
 
 // Computes SimilarityScore between 2 lists
-func ListSimilarityScore(lst, other []LocationId) int {
-	counter := make(map[LocationId]int)
+func ListSimilarityScore(lst, other []int) int {
+	counter := make(map[int]int)
 
 	// Compute count of second list
 	for _, v := range other {
