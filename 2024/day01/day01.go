@@ -2,7 +2,6 @@
 package day01
 
 import (
-	"log"
 	"math"
 	"slices"
 )
@@ -12,9 +11,6 @@ type LocationId int
 
 // Sorts provided slices, and computes the sum of differences
 func ListDiff(lst, other []LocationId) int {
-	if len(lst) != len(other) {
-		log.Fatal("There's an assumption of the lists being the same size\n")
-	}
 	slices.Sort(lst)
 	slices.Sort(other)
 	sum := 0
@@ -28,9 +24,6 @@ func ListDiff(lst, other []LocationId) int {
 
 // Computes SimilarityScore between 2 lists
 func ListSimilarityScore(lst, other []LocationId) int {
-	if len(lst) != len(other) {
-		log.Fatal("There's an assumption of the lists being the same size\n")
-	}
 	counter := make(map[LocationId]int)
 
 	// Compute count of second list
