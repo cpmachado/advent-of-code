@@ -8,18 +8,16 @@ import (
 const exampleFile = "example_file.txt"
 
 func TestParseFile(t *testing.T) {
-	gotA, gotB := ParseFile(exampleFile)
-	// List of Ids
-	wantA := []LocationId{3, 4, 2, 1, 3, 3}
-	// Other List of Ids
-	wantB := []LocationId{4, 3, 5, 3, 9, 3}
-
-	if !slices.Equal(gotA, wantA) {
-		t.Fatalf("Expected '%q' but got '%q'", wantA, gotA)
+	a, b := ParseFile(exampleFile)
+	got := []LocationIdList{a, b}
+	want := []LocationIdList{
+		LocationIdList{3, 4, 2, 1, 3, 3},
+		LocationIdList{4, 3, 5, 3, 9, 3},
 	}
 
-	if !slices.Equal(gotB, wantB) {
-		t.Fatalf("Expected '%q' but got '%q'", wantB, gotB)
+	for i, v := range got {
+		if !slices.Equal(v, want[i]) {
+			t.Fatalf("Expected '%q' but got '%q'", want[i], v)
+		}
 	}
-
 }

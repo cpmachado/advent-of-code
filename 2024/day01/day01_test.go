@@ -3,12 +3,12 @@ package day01
 
 import "testing"
 
-func TestListDiff(t *testing.T) {
+func TestDifferenceScore(t *testing.T) {
 	// List of Ids
-	listA := []LocationId{3, 4, 2, 1, 3, 3}
+	lst := LocationIdList{3, 4, 2, 1, 3, 3}
 	// Other List of Ids
-	listB := []LocationId{4, 3, 5, 3, 9, 3}
-	got := ListDiff(listA, listB)
+	other := LocationIdList{4, 3, 5, 3, 9, 3}
+	got := lst.DifferenceScore(other)
 	want := 11
 
 	if got != want {
@@ -18,10 +18,10 @@ func TestListDiff(t *testing.T) {
 
 func TestListSimilarityScore(t *testing.T) {
 	// List of Ids
-	listA := []LocationId{3, 4, 2, 1, 3, 3}
+	lst := LocationIdList{3, 4, 2, 1, 3, 3}
 	// Other List of Ids
-	listB := []LocationId{4, 3, 5, 3, 9, 3}
-	got := ListSimilarityScore(listA, listB)
+	other := LocationIdList{4, 3, 5, 3, 9, 3}
+	got := lst.SimilarityScore(other)
 	want := 31
 
 	if got != want {
