@@ -19,7 +19,6 @@ var day03Cmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		filename := args[0]
 		input, err := ioutil.ReadFile(filename)
-
 		if err != nil {
 			log.Fatal(err)
 		}

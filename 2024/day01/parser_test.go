@@ -12,8 +12,8 @@ func TestParseFile(t *testing.T) {
 	a, b := ParseFile(exampleFile)
 	got := []LocationIdList{a, b}
 	want := []LocationIdList{
-		LocationIdList{3, 4, 2, 1, 3, 3},
-		LocationIdList{4, 3, 5, 3, 9, 3},
+		{3, 4, 2, 1, 3, 3},
+		{4, 3, 5, 3, 9, 3},
 	}
 
 	for i, v := range got {
