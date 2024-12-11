@@ -3,10 +3,10 @@ package cmd
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
+	"os"
 
-	"github.com/cpmachado/advent-of-code/2024/day03"
+	"github.com/cpmachado/advent-of-code/2024/internal/day03"
 	"github.com/spf13/cobra"
 )
 
@@ -18,7 +18,7 @@ var day03Cmd = &cobra.Command{
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		filename := args[0]
-		input, err := ioutil.ReadFile(filename)
+		input, err := os.ReadFile(filename)
 		if err != nil {
 			log.Fatal(err)
 		}
