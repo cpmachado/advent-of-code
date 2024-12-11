@@ -11,7 +11,6 @@ import (
 
 // Parses the input file for day02
 func ParseFile(filename string) []Report {
-
 	file, err := os.Open(filename)
 	if err != nil {
 		log.Fatal(err)
