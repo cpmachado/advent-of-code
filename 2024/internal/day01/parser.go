@@ -1,4 +1,3 @@
-/* Copyright © 2024 cpmachado <cpmachado@protonmail> */
 package day01
 
 import (
@@ -9,10 +8,10 @@ import (
 	"strings"
 )
 
-// Parses the input file for day01
-func ParseFile(filename string) (LocationIdList, LocationIdList) {
-	listA := LocationIdList{}
-	listB := LocationIdList{}
+// ParseFile parses puzzle input
+func ParseFile(filename string) (LocationIDList, LocationIDList) {
+	listA := LocationIDList{}
+	listB := LocationIDList{}
 
 	file, err := os.Open(filename)
 	if err != nil {

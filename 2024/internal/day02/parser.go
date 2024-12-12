@@ -1,4 +1,3 @@
-/* Copyright © 2024 cpmachado <cpmachado@protonmail> */
 package day02
 
 import (
@@ -9,7 +8,7 @@ import (
 	"strings"
 )
 
-// Parses the input file for day02
+// ParseFile parses puzzle input file for day02
 func ParseFile(filename string) []Report {
 	file, err := os.Open(filename)
 	if err != nil {

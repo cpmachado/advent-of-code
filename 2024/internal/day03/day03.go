@@ -1,3 +1,4 @@
+// Package day03 contains code relating to AOC day03 of 2024
 package day03
 
 import (
@@ -7,15 +8,15 @@ import (
 )
 
 const (
-	MulRegex  = `mul\(\d{1,3},\d{1,3}\)`
-	DoRegex   = `do\(\)`
-	DontRegex = `don't\(\)`
+	mulRegex  = `mul\(\d{1,3},\d{1,3}\)`
+	doRegex   = `do\(\)`
+	dontRegex = `don't\(\)`
 )
 
-// Processes the multiplications from corrupted input program
+// ProgramInterpreter processes a corrupted input program
 func ProgramInterpreter(input string) int {
 	sum := 0
-	re := regexp.MustCompile(MulRegex)
+	re := regexp.MustCompile(mulRegex)
 	cleanRe := regexp.MustCompile("[mul()]")
 	for _, v := range re.FindAllString(input, -1) {
 		cv := strings.Split(cleanRe.ReplaceAllString(v, ""), ",")
@@ -26,10 +27,10 @@ func ProgramInterpreter(input string) int {
 	return sum
 }
 
-// Improved processes the multiplications from corrupted input program
+// ProgramInterpreterImproved processes thoroughly a corrupted input program
 func ProgramInterpreterImproved(input string) int {
-	re := regexp.MustCompile(DontRegex)
-	dore := regexp.MustCompile(DoRegex)
+	re := regexp.MustCompile(dontRegex)
+	dore := regexp.MustCompile(doRegex)
 	sum := 0
 
 	for i, v := range re.Split(input, -1) {

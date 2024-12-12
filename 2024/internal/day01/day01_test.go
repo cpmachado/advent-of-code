@@ -1,13 +1,12 @@
-/* Copyright © 2024 cpmachado <cpmachado@protonmail> */
 package day01
 
 import "testing"
 
 func TestDifferenceScore(t *testing.T) {
-	// List of Ids
-	lst := LocationIdList{3, 4, 2, 1, 3, 3}
-	// Other List of Ids
-	other := LocationIdList{4, 3, 5, 3, 9, 3}
+	// List of IDs
+	lst := LocationIDList{3, 4, 2, 1, 3, 3}
+	// Other List of IDs
+	other := LocationIDList{4, 3, 5, 3, 9, 3}
 	got := lst.DifferenceScore(other)
 	want := 11
 
@@ -17,10 +16,10 @@ func TestDifferenceScore(t *testing.T) {
 }
 
 func TestListSimilarityScore(t *testing.T) {
-	// List of Ids
-	lst := LocationIdList{3, 4, 2, 1, 3, 3}
-	// Other List of Ids
-	other := LocationIdList{4, 3, 5, 3, 9, 3}
+	// List of IDs
+	lst := LocationIDList{3, 4, 2, 1, 3, 3}
+	// Other List of IDs
+	other := LocationIDList{4, 3, 5, 3, 9, 3}
 	got := lst.SimilarityScore(other)
 	want := 31
 
