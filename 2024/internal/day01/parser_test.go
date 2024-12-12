@@ -9,8 +9,8 @@ const exampleFile = "example_file.txt"
 
 func TestParseFile(t *testing.T) {
 	a, b := ParseFile(exampleFile)
-	got := []LocationIdList{a, b}
-	want := []LocationIdList{
+	got := []LocationIDList{a, b}
+	want := []LocationIDList{
 		{3, 4, 2, 1, 3, 3},
 		{4, 3, 5, 3, 9, 3},
 	}

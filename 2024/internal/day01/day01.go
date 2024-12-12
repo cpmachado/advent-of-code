@@ -1,15 +1,17 @@
+// Package day01 contains code relating to AOC day01 of 2024
 package day01
 
 import (
 	"slices"
 
-	"github.com/cpmachado/advent-of-code/2024/common/util"
+	"github.com/cpmachado/advent-of-code/2024/internal/util"
 )
 
-type LocationIdList []int
+// LocationIDList represents a list of LocationID
+type LocationIDList []int
 
-// Sorts provided slices, and computes the sum of differences
-func (lst LocationIdList) DifferenceScore(other LocationIdList) int {
+// DifferenceScore computes the DifferenceScore between 2 lists
+func (lst LocationIDList) DifferenceScore(other LocationIDList) int {
 	slices.Sort(lst)
 	slices.Sort(other)
 	sum := 0
@@ -21,8 +23,8 @@ func (lst LocationIdList) DifferenceScore(other LocationIdList) int {
 	return sum
 }
 
-// Computes SimilarityScore between 2 lists
-func (lst LocationIdList) SimilarityScore(other LocationIdList) int {
+// SimilarityScore computes SimilarityScore between 2 lists
+func (lst LocationIDList) SimilarityScore(other LocationIDList) int {
 	counter := make(map[int]int)
 
 	// Compute count of second list
