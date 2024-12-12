@@ -7,8 +7,14 @@ clean:
 format:
 	gofumpt -l -w .
 
+format-check:
+	exit $(shell gofumpt -l . | wc -l)
+
 lint:
 	golangci-lint run
 
+test:
+	go test ./...
 
-.PHONY: clean format lint
+
+.PHONY: clean format format-check lint

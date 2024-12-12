@@ -1,0 +1,27 @@
+name: 2024 AOC CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: [ '1.23.x' ]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Go ${{ matrix.go-version }}
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go-version }}
+      - name: Display Go version
+        run: go version
+      - name: Check format
+        run: make -C 2024 format-check
+      - name: Check lint
+        run: make -C 2024 lint
+      - name: Test all days
+        run: make -C 2024 test
+
