@@ -1,14 +1,14 @@
 aoc2024:
-	go build -o aoc2024
+	go build ./cmd/aoc2024
 
 clean:
 	rm aoc2024
 
 format:
-	gofumpt -l -w .
+	gofumpt -w .
 
 format-check:
-	exit $(shell gofumpt -l . | wc -l)
+	test -z $(shell gofumpt -l .)
 
 lint:
 	golangci-lint run
@@ -17,4 +17,4 @@ test:
 	go test ./...
 
 
-.PHONY: clean format format-check lint
+.PHONY: clean format format-check lint aoc2024

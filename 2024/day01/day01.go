@@ -1,14 +1,17 @@
 // Package day01 contains code relating to AOC day01 of 2024
 package day01
 
-import (
-	"slices"
-
-	"github.com/cpmachado/advent-of-code/2024/internal/util"
-)
+import "slices"
 
 // LocationIDList represents a list of LocationID
 type LocationIDList []int
+
+func intAbs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
 
 // DifferenceScore computes the DifferenceScore between 2 lists
 func (lst LocationIDList) DifferenceScore(other LocationIDList) int {
@@ -17,7 +20,7 @@ func (lst LocationIDList) DifferenceScore(other LocationIDList) int {
 	sum := 0
 
 	for i, v := range lst {
-		sum += util.IntAbs(v - other[i])
+		sum += intAbs(v - other[i])
 	}
 
 	return sum
