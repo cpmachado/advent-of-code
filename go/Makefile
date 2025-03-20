@@ -1,8 +1,8 @@
 aoc:
-	go build ./cmd/aoc
+	go build ./cmd/aoc-go
 
 clean:
-	rm aoc
+	rm aoc-go
 
 format:
 	gofumpt -w .
@@ -17,4 +17,4 @@ test:
 	go test ./2024/...
 
 
-.PHONY: clean format format-check lint aoc
+.PHONY: clean format format-check lint aoc-go
