@@ -1,4 +1,4 @@
-name: 2024 AOC CI
+name: aoc-go
 
 on: [push]
 
@@ -20,11 +20,11 @@ jobs:
       - name: Install formatter
         run: go install mvdan.cc/gofumpt@latest
       - name: Check format
-        run: make -C 2024 format-check
+        run: make -C go format-check
       - name: Install linter
         run: go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
       - name: Check lint
-        run: make -C 2024 lint
+        run: make -C go lint
       - name: Test all days
-        run: make -C 2024 test
+        run: make -C go test
 
