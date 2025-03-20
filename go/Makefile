@@ -1,8 +1,8 @@
-aoc2024:
-	go build ./cmd/aoc2024
+aoc:
+	go build ./cmd/aoc
 
 clean:
-	rm aoc2024
+	rm aoc
 
 format:
 	gofumpt -w .
@@ -14,7 +14,7 @@ lint:
 	golangci-lint run
 
 test:
-	go test ./...
+	go test ./2024/...
 
 
-.PHONY: clean format format-check lint aoc2024
+.PHONY: clean format format-check lint aoc

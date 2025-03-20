@@ -6,9 +6,9 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/cpmachado/advent-of-code/2024/day01"
-	"github.com/cpmachado/advent-of-code/2024/day02"
-	"github.com/cpmachado/advent-of-code/2024/day03"
+	"github.com/cpmachado/advent-of-code/go/2024/day01"
+	"github.com/cpmachado/advent-of-code/go/2024/day02"
+	"github.com/cpmachado/advent-of-code/go/2024/day03"
 )
 
 type Command func(args []string, second bool) error
