@@ -8,13 +8,13 @@ format:
 	gofumpt -l -w .
 
 format-check:
-	exit $(shell gofumpt -l . | wc -l)
+	test -z $(shell gofumpt -l .)
 
 lint:
 	golangci-lint run
 
 test:
-	go test ./...
+	go test ./internal/...
 
 
 .PHONY: clean format format-check lint
