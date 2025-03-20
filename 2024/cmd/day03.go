@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/cpmachado/advent-of-code/2024/internal/day03"
+	"github.com/cpmachado/advent-of-code/2024/day03"
 	"github.com/spf13/cobra"
 )
 

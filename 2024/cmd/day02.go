@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/cpmachado/advent-of-code/2024/internal/day02"
+	"github.com/cpmachado/advent-of-code/2024/day02"
 	"github.com/spf13/cobra"
 )
 

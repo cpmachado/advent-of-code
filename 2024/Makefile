@@ -5,7 +5,7 @@ clean:
 	rm aoc2024
 
 format:
-	gofumpt -l -w .
+	gofumpt -w .
 
 format-check:
 	test -z $(shell gofumpt -l .)
@@ -14,7 +14,7 @@ lint:
 	golangci-lint run
 
 test:
-	go test ./internal/...
+	go test ./...
 
 
 .PHONY: clean format format-check lint
