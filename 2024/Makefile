@@ -1,5 +1,5 @@
 aoc2024:
-	go build -o aoc2024
+	go build ./cmd/aoc2024
 
 clean:
 	rm aoc2024
@@ -17,4 +17,4 @@ test:
 	go test ./...
 
 
-.PHONY: clean format format-check lint
+.PHONY: clean format format-check lint aoc2024
