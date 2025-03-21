@@ -1,7 +1,8 @@
 """
-    Tests for day 03 of Advent of Code 2023
-    See LICENSE for details
+Tests for day 03 of Advent of Code 2023
+See LICENSE for details
 """
+
 import os
 import unittest
 from day03 import part1, part2

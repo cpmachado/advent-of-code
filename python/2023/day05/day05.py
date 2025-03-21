@@ -1,7 +1,8 @@
 """
-    Program that implements a solution for day 5 of the Advent Of Code 2023.
-    See LICENSE for details.
+Program that implements a solution for day 5 of the Advent Of Code 2023.
+See LICENSE for details.
 """
+
 import argparse
 from math import inf
 from dataclasses import dataclass
