@@ -5,39 +5,52 @@ import (
 	"fmt"
 	"log/slog"
 	"os"
+	"time"
 
-	"github.com/cpmachado/advent-of-code/go/2024/day01"
-	"github.com/cpmachado/advent-of-code/go/2024/day02"
-	"github.com/cpmachado/advent-of-code/go/2024/day03"
+	"github.com/cpmachado/advent-of-code/go/util"
+	"github.com/cpmachado/advent-of-code/go/y2024"
 )
 
-type Command func(args []string, second bool) error
-
-var cmds = []Command{
-	day01.Command,
-	day02.Command,
-	day03.Command,
+var cmds = map[int]util.YearCmds{
+	2024: y2024.DayCommands,
 }
 
 func main() {
-	day, second := 1, false
+	year, day, second := 2024, 1, false
 
 	flag.IntVar(&day, "day", day, "Day to be run")
 	flag.BoolVar(&second, "second", second, "Run part 2, instead of part 1")
 	flag.Parse()
 
-	if day > 25 {
+	earliestValidYear := 2015
+	lastValidYear := time.Now().Year()
+	if time.Now().Month() < 12 {
+		lastValidYear -= 1
+	}
+	switch {
+	case day > 25:
 		slog.Error("Invalid day it should be in [1, 25]")
+		flag.Usage()
+		os.Exit(1)
+	case year < earliestValidYear || year > lastValidYear:
+		slog.Error(fmt.Sprintf("Year should be in [%d, %d]", earliestValidYear, lastValidYear))
 		flag.Usage()
 		os.Exit(1)
 	}
 
-	if day > len(cmds) {
-		fmt.Println("Not Implemented")
+	ycmd, found := cmds[year]
+
+	if !found {
+		fmt.Println("Year not Implemented")
+		os.Exit(1)
+	}
+
+	cmd, found := ycmd[day]
+	if !found {
+		fmt.Println("Not implemented yet")
 		os.Exit(0)
 	}
 
-	cmd := cmds[day-1]
 	if err := cmd(flag.Args(), second); err != nil {
 		slog.Error(err.Error())
 		os.Exit(1)
