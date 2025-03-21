@@ -1,5 +1,7 @@
 name: aoc-python
 
+on: [push]
+
 jobs:
   build:
     name: python
