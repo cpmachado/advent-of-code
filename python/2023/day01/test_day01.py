@@ -7,8 +7,9 @@ import os
 import unittest
 from day01 import part1, part2
 
-TEST_FILE_PART1 = os.path.join("data", "test_part1.txt")
-TEST_FILE_PART2 = os.path.join("data", "test_part2.txt")
+TEST_DIR = os.path.dirname(__file__)
+TEST_FILE_PART1 = os.path.join(TEST_DIR, "example-part1.txt")
+TEST_FILE_PART2 = os.path.join(TEST_DIR,"example-part2.txt")
 
 
 class Day01Tests(unittest.TestCase):

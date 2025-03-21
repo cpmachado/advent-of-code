@@ -5,8 +5,10 @@ See LICENSE for details
 
 import os
 import unittest
+from day05 import part1, part2
 
-TEST_FILE = os.path.join("data", "test.txt")
+TEST_DIR = os.path.dirname(__file__)
+TEST_FILE = os.path.join(TEST_DIR, "example.txt")
 
 
 class Day05Tests(unittest.TestCase):
