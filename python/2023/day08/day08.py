@@ -56,7 +56,6 @@ def part2(filename: str) -> int:
         for line in file_handle:
             k, v = parse_node(line)
             nodes[k] = v
-        cnt = []
         return lcm(
             *list(
                 count_steps(curr, cmds, nodes, (lambda curr: curr.endswith("Z")))

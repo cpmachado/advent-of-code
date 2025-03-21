@@ -131,13 +131,14 @@ def part1(filename: str) -> int:
             IRange(x, x)
             for x in [int(x) for x in next(file_handle, "").strip().split(" ")[1:] if x]
         ]
+
+        def f(dest, src, length):
+            return IRangeMapper(IRange(src, src + length - 1), dest - src)
+
         maps = []
         for line in file_handle:
             if "map" in line:
                 name = line.split(" ")[0]
-                f = lambda dest, src, length: IRangeMapper(
-                    IRange(src, src + length - 1), dest - src
-                )
                 maps.append(
                     PropertyMapper(
                         name,
@@ -159,14 +160,19 @@ def part1(filename: str) -> int:
 
 
 def part2(filename: str) -> int:
-    with open(filename, encoding="utf-8") as file_handle:
-        process_seeds = lambda raw_seeds: [
+    def process_seeds(raw_seeds):
+        return [
             IRange(a, b)
             for a, b in (
                 (raw_seeds[i], raw_seeds[i] + raw_seeds[i + 1] - 1)
                 for i in range(0, len(raw_seeds), 2)
             )
         ]
+
+    def f(dest, src, length):
+        return IRangeMapper(IRange(src, src + length - 1), dest - src)
+
+    with open(filename, encoding="utf-8") as file_handle:
         seeds = process_seeds(
             [int(x) for x in next(file_handle, "").strip().split(" ")[1:] if x]
         )
@@ -174,9 +180,6 @@ def part2(filename: str) -> int:
         for line in file_handle:
             if "map" in line:
                 name = line.split(" ")[0]
-                f = lambda dest, src, length: IRangeMapper(
-                    IRange(src, src + length - 1), dest - src
-                )
                 maps.append(
                     PropertyMapper(
                         name,

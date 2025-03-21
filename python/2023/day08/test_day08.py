@@ -3,9 +3,9 @@ Tests for day 08 of Advent of Code 2023
 See LICENSE for details
 """
 
-import os
+# import os
 import unittest
-from day08 import part1, part2
+# from day08 import part1, part2
 
 # TEST_FILE_1 = os.path.join("data", "test_1.txt")
 # TEST_FILE_2 = os.path.join("data", "test_2.txt")
