@@ -4,8 +4,7 @@
 """
 import argparse
 import re
-from functools import partial
-from itertools import takewhile, cycle
+from itertools import cycle
 from math import lcm
 
 

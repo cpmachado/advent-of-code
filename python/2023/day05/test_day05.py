@@ -4,7 +4,6 @@
 """
 import os
 import unittest
-from day05 import IRange
 
 TEST_FILE = os.path.join("data", "test.txt")
 
