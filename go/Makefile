@@ -14,7 +14,7 @@ lint:
 	golangci-lint run
 
 test:
-	go test ./2024/...
+	go test ./y2024/...
 
 
 .PHONY: clean format format-check lint aoc-go
