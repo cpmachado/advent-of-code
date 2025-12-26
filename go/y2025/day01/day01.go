@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"log/slog"
 	"strconv"
 )
 
@@ -17,47 +16,49 @@ const (
 )
 
 type Rotation struct {
-	Type  RotateType
-	Steps int
+	Type      RotateType
+	Rotations int
 }
 
 func Process(r io.Reader, part2 bool) (int, error) {
 	scanner := bufio.NewScanner(r)
+
 	dial := 50
 	count := 0
 
 	for scanner.Scan() {
 		t, err := lexer(scanner.Text())
 		if err != nil {
-			return 0, nil
+			return 0, err
+		}
+
+		rotations := t.Rotations
+		q, r := rotations/100, rotations%100
+
+		if part2 {
+			count += q
 		}
 
 		switch t.Type {
 		case RotateRight:
-			s := dial + t.Steps
-			q, r := s/100, s%100
-			dial = r
-			if part2 {
-				count += q
+			if part2 && r > 0 && dial+r >= 100 {
+				count++
 			}
+			dial = (dial + r) % 100
+
 		case RotateLeft:
-			s := dial - t.Steps
-			q, r := s/100, s%100
-			dial = (100 + r)
-			if part2 {
-				count += q
-				if r < 0 {
-					count++
-				}
+			if part2 && r > 0 && dial > 0 && r >= dial {
+				count++
 			}
+			dial = (dial + 100 - r) % 100
 		}
-		dial %= 100
+
 		if !part2 && dial == 0 {
 			count++
 		}
-		slog.Info("check", slog.Any("t", t), slog.Int("dial", dial), slog.Int("count", count))
 	}
-	return count, nil
+
+	return count, scanner.Err()
 }
 
 func lexer(s string) (*Rotation, error) {
@@ -76,7 +77,7 @@ func lexer(s string) (*Rotation, error) {
 	}
 
 	return &Rotation{
-		Type:  rtype,
-		Steps: n,
+		Type:      rtype,
+		Rotations: n,
 	}, nil
 }
