@@ -25,7 +25,7 @@ func Process(r io.Reader, part2 bool) (int, error) {
 	sum := 0
 
 	for scanner.Scan() {
-		s := strings.Split(scanner.Text(), "-")
+		s := strings.Split(strings.TrimSpace(scanner.Text()), "-")
 		a, err := strconv.Atoi(s[0])
 		if err != nil {
 			return 0, err
