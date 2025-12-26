@@ -22,7 +22,7 @@ func TestPart1(t *testing.T) {
 	r := strings.NewReader(sample)
 
 	// when
-	count, err := Process(r)
+	count, err := Process(r, false)
 	// then
 	if err != nil {
 		t.Fatal(err)
@@ -30,5 +30,21 @@ func TestPart1(t *testing.T) {
 
 	if count != 3 {
 		t.Fatalf("Expected 3, but got %d\n", count)
+	}
+}
+
+func TestPart2(t *testing.T) {
+	// given
+	r := strings.NewReader(sample)
+
+	// when
+	count, err := Process(r, true)
+	// then
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if count != 6 {
+		t.Fatalf("Expected 6, but got %d\n", count)
 	}
 }

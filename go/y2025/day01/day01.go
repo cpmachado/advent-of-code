@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"log/slog"
 	"strconv"
 )
 
@@ -20,7 +21,7 @@ type Rotation struct {
 	Steps int
 }
 
-func Process(r io.Reader) (int, error) {
+func Process(r io.Reader, part2 bool) (int, error) {
 	scanner := bufio.NewScanner(r)
 	dial := 50
 	count := 0
@@ -33,13 +34,28 @@ func Process(r io.Reader) (int, error) {
 
 		switch t.Type {
 		case RotateRight:
-			dial = (dial + t.Steps) % 100
+			s := dial + t.Steps
+			q, r := s/100, s%100
+			dial = r
+			if part2 {
+				count += q
+			}
 		case RotateLeft:
-			dial = (100 + (dial-t.Steps)%100) % 100
+			s := dial - t.Steps
+			q, r := s/100, s%100
+			dial = (100 + r)
+			if part2 {
+				count += q
+				if r < 0 {
+					count++
+				}
+			}
 		}
-		if dial == 0 {
+		dial %= 100
+		if !part2 && dial == 0 {
 			count++
 		}
+		slog.Info("check", slog.Any("t", t), slog.Int("dial", dial), slog.Int("count", count))
 	}
 	return count, nil
 }
