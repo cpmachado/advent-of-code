@@ -23,3 +23,20 @@ func TestPart1(t *testing.T) {
 		t.Fatalf("Expected %d, but got %d\n", want, got)
 	}
 }
+
+func TestPart2(t *testing.T) {
+	// given
+	r := strings.NewReader(sample)
+	want := 4174379265
+
+	// when
+	got, err := Process(r, true)
+	// then
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if got != want {
+		t.Fatalf("Expected %d, but got %d\n", want, got)
+	}
+}
