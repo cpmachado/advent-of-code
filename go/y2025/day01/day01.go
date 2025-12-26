@@ -62,7 +62,7 @@ func Process(r io.Reader, part2 bool) (int, error) {
 }
 
 func lexer(s string) (*Rotation, error) {
-	rtype := RotateUnknown
+	var rtype RotateType
 	switch s[0] {
 	case 'R':
 		rtype = RotateRight

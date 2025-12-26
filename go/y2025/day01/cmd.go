@@ -17,6 +17,9 @@ func Command(args []string, second bool) error {
 	}
 
 	count, err := Process(file, second)
+	if err != nil {
+		return err
+	}
 
 	if second {
 		fmt.Printf("Count: %d\n", count)
