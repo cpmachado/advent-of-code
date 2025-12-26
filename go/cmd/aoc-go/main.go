@@ -9,14 +9,16 @@ import (
 
 	"github.com/cpmachado/advent-of-code/go/util"
 	"github.com/cpmachado/advent-of-code/go/y2024"
+	"github.com/cpmachado/advent-of-code/go/y2025"
 )
 
 var cmds = map[int]util.YearCmds{
 	2024: y2024.DayCommands,
+	2025: y2025.DayCommands,
 }
 
 func main() {
-	year, day, second := 2024, 1, false
+	year, day, second := 2025, 1, false
 
 	flag.IntVar(&day, "day", day, "Day to be run")
 	flag.BoolVar(&second, "second", second, "Run part 2, instead of part 1")
