@@ -20,6 +20,7 @@ var cmds = map[int]util.YearCmds{
 func main() {
 	year, day, second := 2025, 1, false
 
+	flag.IntVar(&year, "year", year, "Year to be run")
 	flag.IntVar(&day, "day", day, "Day to be run")
 	flag.BoolVar(&second, "second", second, "Run part 2, instead of part 1")
 	flag.Parse()
