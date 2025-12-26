@@ -24,8 +24,14 @@ func Process(r io.Reader, part2 bool) (int, error) {
 
 	sum := 0
 
+	validator := isInvalid
+	if part2 {
+		validator = isInvalidPart2
+	}
+
 	for scanner.Scan() {
-		s := strings.Split(strings.TrimSpace(scanner.Text()), "-")
+		token := scanner.Text()
+		s := strings.Split(strings.TrimSpace(token), "-")
 		a, err := strconv.Atoi(s[0])
 		if err != nil {
 			return 0, err
@@ -35,8 +41,7 @@ func Process(r io.Reader, part2 bool) (int, error) {
 			return 0, err
 		}
 		for a <= b {
-
-			if isInvalid(a) {
+			if validator(a) {
 				sum += a
 			}
 			a++
@@ -52,4 +57,39 @@ func isInvalid(a int) bool {
 	mid := k / 2
 
 	return k%2 == 0 && sa[:mid] == sa[mid:]
+}
+
+func isInvalidPart2(a int) bool {
+	sa := strconv.Itoa(a)
+	n := len(sa)
+
+	for _, f := range factorsCanonic(n) {
+		found := true
+		prev := sa[:f]
+		for i := f; i < n; i += f {
+			curr := sa[i : i+f]
+			if prev != curr {
+				found = false
+				break
+			}
+			prev = curr
+		}
+		if found {
+			return true
+		}
+	}
+
+	return false
+}
+
+func factorsCanonic(k int) []int {
+	var fset []int
+
+	for i := 1; i < k; i++ {
+		if k%i == 0 {
+			fset = append(fset, i)
+		}
+	}
+
+	return fset
 }
