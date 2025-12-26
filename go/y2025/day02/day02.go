@@ -35,22 +35,21 @@ func Process(r io.Reader, part2 bool) (int, error) {
 			return 0, err
 		}
 		for a <= b {
-			sa := strconv.Itoa(a)
-			k := len(sa)
 
-			if k%2 != 0 {
-				a++
-				continue
-			}
-
-			mid := k / 2
-			if sa[:mid] == sa[mid:] {
+			if isInvalid(a) {
 				sum += a
 			}
-
 			a++
 		}
 	}
 
 	return sum, nil
+}
+
+func isInvalid(a int) bool {
+	sa := strconv.Itoa(a)
+	k := len(sa)
+	mid := k / 2
+
+	return k%2 == 0 && sa[:mid] == sa[mid:]
 }
