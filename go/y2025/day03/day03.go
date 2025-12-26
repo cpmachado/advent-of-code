@@ -10,9 +10,15 @@ func Process(r io.Reader, part2 bool) (int, error) {
 
 	sum := 0
 
+	summer := retrieveMaxJoltage
+
+	if part2 {
+		summer = retrieveMaxJoltagePart2
+	}
+
 	for scanner.Scan() {
 		token := scanner.Text()
-		mj := retrieveMaxJoltage(token)
+		mj := summer(token)
 		sum += mj
 	}
 
@@ -42,4 +48,29 @@ func retrieveMaxJoltage(s string) int {
 	a := int(ba - '0')
 	b := int(bb - '0')
 	return a*10 + b
+}
+
+func retrieveMaxJoltagePart2(s string) int {
+	k := 12
+	n := len(s)
+	b := 0
+	sum := 0
+
+	for k > 0 {
+		f := n - k - b + 1
+		t := '0'
+		ti := 0
+		for i, r := range s[b : b+f] {
+			if r > t {
+				ti = i
+				t = r
+			}
+		}
+		sum = sum*10 + int(t-'0')
+		b += ti
+		b++
+		k--
+	}
+
+	return sum
 }
