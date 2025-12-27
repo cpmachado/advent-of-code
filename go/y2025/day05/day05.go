@@ -56,8 +56,13 @@ func Process(r io.Reader, part2 bool) (int, error) {
 	for i, curr := range oldSets {
 		if i == 0 {
 			acc = curr
-		} else if curr.Contains(acc.B) {
-			acc.B = curr.B
+		} else if curr.Contains(acc.B) || acc.Contains(curr.A) || acc.Contains(curr.B) {
+			if acc.A > curr.A {
+				acc.A = curr.A
+			}
+			if acc.B < curr.B {
+				acc.B = curr.B
+			}
 		} else {
 			sets = append(sets, acc)
 			acc = curr
