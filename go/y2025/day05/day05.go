@@ -3,6 +3,7 @@ package day05
 import (
 	"bufio"
 	"io"
+	"slices"
 	"strconv"
 	"strings"
 )
@@ -38,14 +39,51 @@ func Process(r io.Reader, part2 bool) (int, error) {
 		sets = append(sets, r)
 	}
 
-	// parse igredients
-	for scanner.Scan() {
-		token := scanner.Text()
+	// ---------------------------------------------------------------------
+	// Sort and coalesce sets
+	slices.SortFunc(sets, func(a Set, b Set) int {
+		if a.A == b.A {
+			return a.B - b.B
+		}
+		return a.A - b.A
+	})
 
-		i, _ := strconv.Atoi(token)
+	oldSets := sets
+	sets = nil
+	var acc Set
+	lidx := -1
 
-		if isFresh(sets, i) {
-			count++
+	for i, curr := range oldSets {
+		if i == 0 {
+			acc = curr
+		} else if curr.Contains(acc.B) {
+			acc.B = curr.B
+		} else {
+			sets = append(sets, acc)
+			acc = curr
+			lidx = i
+		}
+	}
+	if lidx+1 < len(oldSets) {
+		sets = append(sets, acc)
+	}
+
+	// ---------------------------------------------------------------------
+
+	if part2 {
+		for _, s := range sets {
+			count += s.B - s.A + 1
+		}
+	} else {
+		// parse igredients
+		for scanner.Scan() {
+			token := scanner.Text()
+
+			i, _ := strconv.Atoi(token)
+
+			if isFresh(sets, i) {
+				count++
+			}
 		}
 	}
 
