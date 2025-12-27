@@ -6,6 +6,7 @@ import (
 	"github.com/cpmachado/advent-of-code/go/y2025/day02"
 	"github.com/cpmachado/advent-of-code/go/y2025/day03"
 	"github.com/cpmachado/advent-of-code/go/y2025/day04"
+	"github.com/cpmachado/advent-of-code/go/y2025/day05"
 )
 
 var DayCommands = map[int]util.Command{
@@ -13,4 +14,5 @@ var DayCommands = map[int]util.Command{
 	2: day02.Command,
 	3: day03.Command,
 	4: day04.Command,
+	5: day05.Command,
 }
