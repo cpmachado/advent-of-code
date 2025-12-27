@@ -3,6 +3,7 @@ package day04
 import (
 	"bufio"
 	"io"
+	"strings"
 )
 
 func Process(r io.Reader, part2 bool) (int, error) {
@@ -17,17 +18,40 @@ func Process(r io.Reader, part2 bool) (int, error) {
 		papermap = append(papermap, token)
 	}
 
-	for i, row := range papermap {
-		for j, r := range row {
-			if r == '@' {
-				if k := countAdjacentRolls(i, j, papermap); k < 4 {
-					count++
-				}
-			}
+	count, papermap = countAndClean(papermap)
+
+	if part2 {
+		k := count
+		for k > 0 {
+			k, papermap = countAndClean(papermap)
+			count += k
 		}
 	}
 
 	return count, nil
+}
+
+func countAndClean(papermap []string) (int, []string) {
+	count := 0
+	var clean []string
+
+	for i, row := range papermap {
+		nrow := &strings.Builder{}
+		for j, r := range row {
+			if r == '@' {
+				if k := countAdjacentRolls(i, j, papermap); k < 4 {
+					count++
+					nrow.WriteRune('.')
+					continue
+				}
+			}
+			nrow.WriteRune(r)
+		}
+
+		clean = append(clean, nrow.String())
+	}
+
+	return count, clean
 }
 
 func countAdjacentRolls(x, y int, papermap []string) int {
